@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "484779040551",
+    "project_id": "jayma-88682",
+    "storage_bucket": "jayma-88682.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484779040551:android:c2301f74ca3ae219341302",
+        "android_client_info": {
+          "package_name": "sn.jayma.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUVYWUuubdKlqv6SdA2_hhVRzwhVaJtZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484779040551:android:65028b6a70289df9341302",
+        "android_client_info": {
+          "package_name": "sn.jayma.store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUVYWUuubdKlqv6SdA2_hhVRzwhVaJtZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
