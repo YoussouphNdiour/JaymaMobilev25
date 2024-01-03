@@ -42,7 +42,7 @@ class LanguageWidget extends StatelessWidget {
                 child: Image.asset(
                   languageModel.imageUrl!, width: 36, height: 36,
                   color: languageModel.languageCode == 'fr' || languageModel.languageCode == 'en'
-                      || languageModel.languageCode == 'ar' || languageModel.languageCode == 'bn'
+                      //|| languageModel.languageCode == 'ar' || languageModel.languageCode == 'bn'
                       ? Theme.of(context).textTheme.bodyLarge!.color : null,
                 ),
               ),
