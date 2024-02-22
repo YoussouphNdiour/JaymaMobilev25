@@ -78,7 +78,7 @@ class PaymentSection extends StatelessWidget {
             orderController.paymentMethodIndex != -1 ? Image.asset(
               orderController.paymentMethodIndex == 0 ? Images.cash
                   : orderController.paymentMethodIndex == 1 ? Images.wallet
-                  : orderController.paymentMethodIndex == 2 ? Images.digitalPayment
+                  : orderController.paymentMethodIndex == 2 ||orderController.paymentMethodIndex == 6  ? Images.digitalPayment
                   : Images.cash,
               width: 20, height: 20,
               color: Theme.of(context).textTheme.bodyMedium!.color,
@@ -93,7 +93,7 @@ class PaymentSection extends StatelessWidget {
                 Text(
                   orderController.paymentMethodIndex == 0 ? 'cash_on_delivery'.tr
                       : orderController.paymentMethodIndex == 1 ? 'wallet_payment'.tr
-                      : orderController.paymentMethodIndex == 2 ? 'digital_payment'.tr
+                      : orderController.paymentMethodIndex == 2 || orderController.paymentMethodIndex == 6 ? 'digital_payment'.tr
                       : orderController.paymentMethodIndex == 3 ? '${'offline_payment'.tr}(${orderController.offlineMethodList![orderController.selectedOfflineBankIndex].methodName})'
                       : !ResponsiveHelper.isDesktop(context) ? 'select_payment_method'.tr : 'add_payment_method'.tr,
                   style: robotoMedium.copyWith(

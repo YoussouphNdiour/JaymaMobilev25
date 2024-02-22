@@ -143,6 +143,10 @@ class Images {
   static const String banner1 = 'assets/image/banner1.png';
   static const String banner2 = 'assets/image/banner2.png';
   static const String appleLogo = 'assets/image/apple_logo.png';
+ static const String om = 'assets/image/OM.png';
+ static const String wave = 'assets/image/wave.png';
+
+
 
   static const String forgetIcon = 'assets/image/forget_icon.png';
   static const String loyaltyIcon = 'assets/image/loyalty_icon.png';

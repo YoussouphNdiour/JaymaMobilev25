@@ -123,11 +123,21 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                       Row(children: [
                         widget.isCashOnDeliveryActive && notHideCod ? Expanded(
                           child: PaymentButtonNew(
-                            icon: Images.codIcon,
-                            title: 'cash_on_delivery'.tr,
-                            isSelected: orderController.paymentMethodIndex == 0,
+                            icon: Images.om,
+                            title: 'Orange Money',
+                            isSelected: orderController.paymentMethodIndex == 2,
                             onTap: () {
-                              orderController.setPaymentMethod(0);
+                              orderController.setPaymentMethod(2);
+                            },
+                          ),
+                        ) : const SizedBox(),
+                        widget.isCashOnDeliveryActive && notHideCod ? Expanded(
+                          child: PaymentButtonNew(
+                            icon: Images.wave,
+                            title: 'Wave',
+                            isSelected: orderController.paymentMethodIndex == 6,
+                            onTap: () {
+                              orderController.setPaymentMethod(6);
                             },
                           ),
                         ) : const SizedBox(),
@@ -170,7 +180,7 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                           padding: EdgeInsets.zero,
                           itemCount: Get.find<SplashController>().configModel!.activePaymentMethodList!.length,
                           itemBuilder: (context, index) {
-                            bool isSelected = orderController.paymentMethodIndex == 2 && Get.find<SplashController>().configModel!.activePaymentMethodList![index].getWay! == orderController.digitalPaymentName;
+                            bool isSelected = orderController.paymentMethodIndex == 2 || orderController.paymentMethodIndex == 6 && Get.find<SplashController>().configModel!.activePaymentMethodList![index].getWay! == orderController.digitalPaymentName;
                           return InkWell(
                             onTap: (){
                               orderController.setPaymentMethod(2);

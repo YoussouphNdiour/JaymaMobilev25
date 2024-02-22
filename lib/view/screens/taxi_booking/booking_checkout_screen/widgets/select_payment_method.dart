@@ -67,7 +67,7 @@ class SelectPaymentMethod extends StatelessWidget {
                 isSelected: bookingCheckoutController.paymentMethodIndex == 1,
                 onTap: () => bookingCheckoutController.setPaymentMethod(1),
               ),
-
+ const SizedBox(height: Dimensions.paddingSizeDefault),
               TaxiPaymentButton(
                 icon: Images.wallet,
                 title: 'wallet_payment'.tr,

@@ -66,7 +66,9 @@ class _OrderSuccessfulScreenState extends State<OrderSuccessfulScreen> {
           double? maximumCodOrderAmount;
           if(orderController.trackModel != null) {
             total = ((orderController.trackModel!.orderAmount! / 100) * Get.find<SplashController>().configModel!.loyaltyPointItemPurchasePoint!);
-            success = orderController.trackModel!.paymentStatus == 'paid' || orderController.trackModel!.paymentMethod == 'cash_on_delivery' || orderController.trackModel!.paymentMethod == 'partial_payment';
+            var aa = orderController.trackModel!.paymentMethod;
+            print("orderController.trackModel!.paymentMethod $aa" );
+            success = orderController.trackModel!.paymentStatus == 'paid' || orderController.trackModel!.paymentMethod == 'cash_on_delivery' || orderController.trackModel!.paymentMethod == 'digital_payment' || orderController.trackModel!.paymentMethod == 'partial_payment' ;
             parcel = orderController.trackModel!.paymentMethod == 'parcel';
             for(ZoneData zData in Get.find<LocationController>().getUserAddress()!.zoneData!) {
               for(Modules m in zData.modules!) {
