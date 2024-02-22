@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jayma Gade Gui</string>
-    <string name="facebook_app_id">222689797550457</string>
-    <string name="fb_login_protocol_scheme">fb222689797550457</string>
-    <string name="facebook_client_token">35cd6e3d7d7297e6b915aa26c618efd1</string>
+    <string name="facebook_app_id">719003623675684</string>
+    <string name="fb_login_protocol_scheme">fb719003623675684</string>
+    <string name="facebook_client_token">005a6791e4866f783f19a5ca5b7686cd</string>
 </resources>
