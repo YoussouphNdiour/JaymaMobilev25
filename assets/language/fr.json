@@ -151,7 +151,7 @@
     "my_address": "Mon adresse",
     "saved_address": "Adresses enregistrées",
     "add_new_address": "Ajouter une nouvelle adresse",
-    "home": "Domicile",
+    "home": "Accueil",
     "office": "Bureau",
     "others": "Autres",
     "delivery_address": "Adresse de livraison",
@@ -1140,7 +1140,19 @@
             "please_maintain_the_hygine": "Veuillez maintenir l'hygiène",
             "sender_info": "Informations de l'expéditeur",
             "receiver_info": "Informations du destinataire",
-            "pickup_location": "Lieu de ramassage"
-          
+            "pickup_location": "Lieu de ramassage",
+
+"by_login_i_agree_with_all_the": "En me connectant, j'accepte toutes les",
+
+
+
+
+
+
+
+
+
+
+
           
   }
