@@ -772,7 +772,7 @@
     "you_did_not_select_select_any_reason": "Vous n'avez sélectionné aucune raison",
     "switch_to_cod": "Passer au paiement à la livraison",
     "cancellation_note": "Note d'annulation",
-    {
+    
       "do_not_have_account": "Vous n'avez pas de compte ?",
       "already_have_account": "Vous avez déjà un compte ?",
       "if_you_have_any_queries_feel_free_to_contact_with_our": "Si vous avez des questions, n'hésitez pas à nous contacter via notre",
@@ -1142,7 +1142,7 @@
             "receiver_info": "Informations du destinataire",
             "pickup_location": "Lieu de ramassage",
 
-"by_login_i_agree_with_all_the": "En me connectant, j'accepte toutes les",
+"by_login_i_agree_with_all_the": "En me connectant, j'accepte toutes les"
 
 
 
