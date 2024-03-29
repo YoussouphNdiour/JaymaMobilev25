@@ -46,7 +46,7 @@ class OrderController extends GetxController implements GetxService {
   PaginatedOrderModel? _runningOrderModel;
   PaginatedOrderModel? _historyOrderModel;
   List<OrderDetailsModel>? _orderDetails;
-  int _paymentMethodIndex = 2;
+  int _paymentMethodIndex = -1;
   OrderModel? _trackModel;
   ResponseModel? _responseModel;
   bool _isLoading = false;
@@ -530,21 +530,17 @@ class OrderController extends GetxController implements GetxService {
     update();
     String orderID = '';
     Response response = await orderRepo.placeOrder(placeOrderBody, _orderAttachment );
-    print('-------- response---------- $response');
     _isLoading = false;
     if (response.statusCode == 200) {
       String? message = response.body['message'];
       orderID = response.body['order_id'].toString();
       if(!isOfflinePay) {
         if(forParcel) {
-          print('-------- forParcel----------');
           parcelCallback(true, message, orderID, zoneID, amount, maximumCodOrderAmount, isCashOnDeliveryActive, placeOrderBody.contactPersonNumber);
         } else {
-           print('-------- callback----------');
-          callback(true, message, orderID, zoneID, amount, maximumCodOrderAmount, fromCart, isCashOnDeliveryActive, placeOrderBody.contactPersonNumber);
+          callback(true, message, orderID, zoneID, amount, maximumCodOrderAmount, fromCart, isCashOnDeliveryActive, placeOrderBody.contactPersonNumber!);
         }
       } else {
-        print('-------- !isOfflinePay----------');
         Get.find<CartController>().getCartDataOnline();
       }
       _orderAttachment = null;
@@ -563,7 +559,6 @@ class OrderController extends GetxController implements GetxService {
         showCustomSnackBar(response.statusText);
       }
     }
-    print('-------- end----------');
     update();
 
     return orderID;
@@ -619,39 +614,37 @@ class OrderController extends GetxController implements GetxService {
       }
       Get.find<OrderController>().stopLoader(canUpdate: false);
       HomeScreen.loadData(true);
-      // if(Get.find<OrderController>().paymentMethodIndex == 2) {
-      //   if(GetPlatform.isWeb) {
-      //     // Get.back();
-      //     await Get.find<AuthController>().saveGuestNumber(contactNumber ?? '');
-      //     String? hostname = html.window.location.hostname;
-      //     String protocol = html.window.location.protocol;
-      //     String selectedUrl;
-      //     print('===customer id: ${Get.find<UserController>().userInfoModel?.id} /// guest id: ${Get.find<AuthController>().getGuestId()}');
-      //     selectedUrl = '${AppConstants.baseUrl}/payment-mobile?order_id=$orderID&&customer_id=${Get.find<UserController>().userInfoModel?.id ?? Get.find<AuthController>().getGuestId()}'
-      //         '&payment_method=${Get.find<OrderController>().digitalPaymentName}&payment_platform=web&&callback=$protocol//$hostname${RouteHelper.orderSuccess}?id=$orderID&status=';
+      if(Get.find<OrderController>().paymentMethodIndex == 2) {
+        if(GetPlatform.isWeb) {
+          // Get.back();
+          await Get.find<AuthController>().saveGuestNumber(contactNumber ?? '');
+          String? hostname = html.window.location.hostname;
+          String protocol = html.window.location.protocol;
+          String selectedUrl;
+          print('===customer id: ${Get.find<UserController>().userInfoModel?.id} /// guest id: ${Get.find<AuthController>().getGuestId()}');
+          selectedUrl = '${AppConstants.baseUrl}/payment-mobile?order_id=$orderID&&customer_id=${Get.find<UserController>().userInfoModel?.id ?? Get.find<AuthController>().getGuestId()}'
+              '&payment_method=${Get.find<OrderController>().digitalPaymentName}&payment_platform=web&&callback=$protocol//$hostname${RouteHelper.orderSuccess}?id=$orderID&status=';
 
-      //     html.window.open(selectedUrl,"_self");
-      //   } else{
-      //     Get.offNamed(RouteHelper.getPaymentRoute(
-      //       orderID, Get.find<UserController>().userInfoModel?.id ?? 0, Get.find<OrderController>().orderType, amount,
-      //       isCashOnDeliveryActive, Get.find<OrderController>().digitalPaymentName, guestId: Get.find<AuthController>().getGuestId(),
-      //       contactNumber: contactNumber,
-      //     ));
-      //   }
-      // } 
-     // else {
+          html.window.open(selectedUrl,"_self");
+        } else{
+          Get.offNamed(RouteHelper.getPaymentRoute(
+            orderID, Get.find<UserController>().userInfoModel?.id ?? 0, Get.find<OrderController>().orderType, amount,
+            isCashOnDeliveryActive, Get.find<OrderController>().digitalPaymentName, guestId: Get.find<AuthController>().getGuestId(),
+            contactNumber: contactNumber,
+          ));
+        }
+      } else {
         double total = ((amount / 100) * Get.find<SplashController>().configModel!.loyaltyPointItemPurchasePoint!);
         if(Get.find<AuthController>().isLoggedIn()) {
           Get.find<AuthController>().saveEarningPoint(total.toStringAsFixed(0));
         }
         if (ResponsiveHelper.isDesktop(Get.context) && Get.find<AuthController>().isLoggedIn()){
           Get.offNamed(RouteHelper.getInitialRoute());
-          Future.delayed(const Duration(seconds: 5) , () => Get.dialog(Center(child: SizedBox(height: 350, width : 500, child: OrderSuccessfulDialog( orderID: orderID)))));
+          Future.delayed(const Duration(seconds: 2) , () => Get.dialog(Center(child: SizedBox(height: 350, width : 500, child: OrderSuccessfulDialog( orderID: orderID)))));
         } else {
-          print('-------- redirect----------');
           Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID, contactNumber));
         }
-     // }
+      }
       Get.find<OrderController>().clearPrevData(zoneID);
       Get.find<CouponController>().removeCouponData(false);
       Get.find<OrderController>().updateTips(
@@ -737,7 +730,7 @@ class OrderController extends GetxController implements GetxService {
     //       : Get.find<SplashController>().configModel!.digitalPayment! ? 1
     //       : Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? 2 : 0;
     // }
-    _paymentMethodIndex = 2;
+    _paymentMethodIndex = -1;
     _selectedDateSlot = 0;
     _selectedTimeSlot = 0;
     _distance = null;

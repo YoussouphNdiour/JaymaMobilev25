@@ -36,8 +36,8 @@ class LocationController extends GetxController implements GetxService {
   final LocationRepo locationRepo;
   LocationController({required this.locationRepo});
 
-  Position _position = Position(longitude: -17.4658, latitude: 14.74, timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,altitudeAccuracy:1,headingAccuracy:1);
-  Position _pickPosition = Position(longitude: -17.4658, latitude: 14.74, timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,altitudeAccuracy:1,headingAccuracy:1);
+  Position _position = Position(longitude: 0, latitude: 0, timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1);
+  Position _pickPosition = Position(longitude: 0, latitude: 0, timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1);
   bool _loading = false;
   String? _address = '';
   String? _pickAddress = '';
@@ -107,7 +107,7 @@ class LocationController extends GetxController implements GetxService {
       myPosition = Position(
         latitude: defaultLatLng != null ? defaultLatLng.latitude : double.parse(Get.find<SplashController>().configModel!.defaultLocation!.lat ?? '0'),
         longitude: defaultLatLng != null ? defaultLatLng.longitude : double.parse(Get.find<SplashController>().configModel!.defaultLocation!.lng ?? '0'),
-        timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,altitudeAccuracy:1,headingAccuracy:1
+        timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,
       );
     }
     if(fromAddress) {
@@ -139,7 +139,7 @@ class LocationController extends GetxController implements GetxService {
   Future<void> setStoreAddressToUserAddress(LatLng storeAddress) async {
     Position storePosition = Position(
       latitude: storeAddress.latitude, longitude: storeAddress.longitude,
-      timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,altitudeAccuracy:1,headingAccuracy:1
+      timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,
     );
     String addressFromGeocode = await getAddressFromGeocode(LatLng(storeAddress.latitude, storeAddress.longitude));
     ZoneResponseModel responseModel = await getZone(storePosition.latitude.toString(), storePosition.longitude.toString(), true);
@@ -239,12 +239,12 @@ class LocationController extends GetxController implements GetxService {
         if (fromAddress) {
           _position = Position(
             latitude: position!.target.latitude, longitude: position.target.longitude, timestamp: DateTime.now(),
-            heading: 1, accuracy: 1, altitude: 1, speedAccuracy: 1, speed: 1,altitudeAccuracy:1,headingAccuracy:1
+            heading: 1, accuracy: 1, altitude: 1, speedAccuracy: 1, speed: 1,
           );
         } else {
           _pickPosition = Position(
             latitude: position!.target.latitude, longitude: position.target.longitude, timestamp: DateTime.now(),
-            heading: 1, accuracy: 1, altitude: 1, speedAccuracy: 1, speed: 1,altitudeAccuracy:1,headingAccuracy:1
+            heading: 1, accuracy: 1, altitude: 1, speedAccuracy: 1, speed: 1,
           );
         }
         ZoneResponseModel responseModel = await getZone(position.target.latitude.toString(), position.target.longitude.toString(), true);
@@ -487,7 +487,7 @@ class LocationController extends GetxController implements GetxService {
 
     _pickPosition = Position(
       latitude: latLng.latitude, longitude: latLng.longitude,
-      timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,altitudeAccuracy:1,headingAccuracy:1
+      timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,
     );
 
     _pickAddress = address;
@@ -520,7 +520,7 @@ class LocationController extends GetxController implements GetxService {
   void setUpdateAddress(AddressModel address){
     _position = Position(
       latitude: double.parse(address.latitude!), longitude: double.parse(address.longitude!), timestamp: DateTime.now(),
-      altitude: 1, heading: 1, speed: 1, speedAccuracy: 1, floor: 1, accuracy: 1,altitudeAccuracy:1,headingAccuracy:1
+      altitude: 1, heading: 1, speed: 1, speedAccuracy: 1, floor: 1, accuracy: 1,
     );
     _address = address.address;
     _addressTypeIndex = _addressTypeList.indexOf(address.addressType);
@@ -588,7 +588,7 @@ class LocationController extends GetxController implements GetxService {
         myPosition = Position(
           latitude: double.parse(Get.find<SplashController>().configModel!.defaultLocation!.lat ?? '0'),
           longitude: double.parse(Get.find<SplashController>().configModel!.defaultLocation!.lng ?? '0'),
-          timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,altitudeAccuracy:1,headingAccuracy:1
+          timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1,
         );
       }
 

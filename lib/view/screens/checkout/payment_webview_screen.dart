@@ -105,10 +105,14 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
               shouldOverrideUrlLoading: (controller, navigationAction) async {
                 Uri uri = navigationAction.request.url!;
                 if (!["http", "https", "file", "chrome", "data", "javascript", "about"].contains(uri.scheme)) {
-                  if (await canLaunchUrl(uri)) {
+                   if (await canLaunchUrl(uri)) {
                     await launchUrl(uri, mode: LaunchMode.externalApplication);
-                    return NavigationActionPolicy.CANCEL;
-                  }
+                     return NavigationActionPolicy.ALLOW;
+                   }
+                }
+                else{
+                   await launchUrl(uri, mode: LaunchMode.externalApplication);
+                     return NavigationActionPolicy.ALLOW;
                 }
                 return NavigationActionPolicy.ALLOW;
               },

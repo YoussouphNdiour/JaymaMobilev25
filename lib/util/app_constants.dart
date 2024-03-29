@@ -4,7 +4,7 @@ import 'package:sixam_mart/data/model/response/language_model.dart';
 import 'package:sixam_mart/util/images.dart';
 
 class AppConstants {
-  static const String appName = 'Jayma Gade Gui';
+  static const String appName = 'Jayma Gade gui';
   static const double appVersion = 2.5;
 
   static const String fontFamily = 'Roboto';
@@ -226,8 +226,8 @@ class AppConstants {
   static const String grocery = 'grocery';
 
   static List<LanguageModel> languages = [
-        LanguageModel(imageUrl: Images.english, languageName: 'Français', countryCode: 'SN', languageCode: 'fr'),
-    LanguageModel(imageUrl: Images.english, languageName: 'English', countryCode: 'SN', languageCode: 'en'),
+    LanguageModel(imageUrl: Images.english, languageName: 'English', countryCode: 'US', languageCode: 'en'),
+    LanguageModel(imageUrl: Images.arabic, languageName: 'عربى', countryCode: 'SA', languageCode: 'ar'),
     // LanguageModel(imageUrl: Images.arabic, languageName: 'Spanish', countryCode: 'ES', languageCode: 'es'),
     // LanguageModel(imageUrl: Images.bengali, languageName: 'Bengali', countryCode: 'BN', languageCode: 'bn'),
   ];
