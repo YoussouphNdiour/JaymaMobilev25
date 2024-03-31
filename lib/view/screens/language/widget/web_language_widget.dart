@@ -43,7 +43,8 @@ class WebLanguageWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Image.asset(
                   languageModel.imageUrl!, width: 26, height: 26,
-                  color: languageModel.languageCode == 'en' || languageModel.languageCode == 'ar' || languageModel.languageCode == 'es'
+                  color: languageModel.languageCode == 'fr' || languageModel.languageCode == 'en' 
+                  //|| languageModel.languageCode == 'es'
                       ? Theme.of(context).textTheme.bodyLarge!.color : null,
                 ),
               ),
