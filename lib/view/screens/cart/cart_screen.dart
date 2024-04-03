@@ -516,12 +516,15 @@ class CheckoutButton extends StatelessWidget {
                   isBold:  ResponsiveHelper.isDesktop(context) ? false : true,
                   radius: ResponsiveHelper.isDesktop(context) ? Dimensions.radiusSmall : Dimensions.radiusDefault,
                   onPressed: () {
+                    if(Get.find<CartController>().notAvailableIndex == -1) {
+                    showCustomSnackBar('if_any_product_is_not_available'.tr);
+                  }
                   if(!cartController.cartList.first.item!.scheduleOrder! && availableList.contains(false)) {
                     showCustomSnackBar('one_or_more_product_unavailable'.tr);
                   } /*else if(Get.find<AuthController>().isGuestLoggedIn() && !Get.find<SplashController>().configModel!.guestCheckoutStatus!) {
                     showCustomSnackBar('currently_your_zone_have_no_permission_to_place_any_order'.tr);
                   }*/ else {
-                    if(Get.find<SplashController>().module == null) {
+                    if(Get.find<SplashController>().module == null || Get.find<CartController>().notAvailableIndex == -1) {
                       int i = 0;
                       for(i = 0; i < Get.find<SplashController>().moduleList!.length; i++){
                         if(cartController.cartList[0].item!.moduleId == Get.find<SplashController>().moduleList![i].id){

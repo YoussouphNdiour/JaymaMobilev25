@@ -30,7 +30,7 @@ class CartController extends GetxController implements GetxService {
   double _variationPrice = 0;
   List<List<AddOns>> _addOnsList = [];
   List<bool> _availableList = [];
-  List<String> notAvailableList = ['Remove it from my cart', 'I’ll wait until it’s restocked', 'Please cancel the order', 'Call me ASAP', 'Notify me when it’s back'];
+  List<String> notAvailableList = ['Mardi', 'Jeudi', 'Samedi'];
   bool _addCutlery = false;
   int _notAvailableIndex = -1;
   int _currentIndex = 0;
