@@ -15,7 +15,7 @@ class CustomTimePicker extends StatelessWidget {
     for(int i = 1; i <= 60 ; i++){
       time.add(i.toString());
     }
-    List<String> unit = ['minute', 'hours', 'days'];
+    List<String> unit = ['minute'.tr, 'hours'.tr, 'days'.tr];
 
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge)),
