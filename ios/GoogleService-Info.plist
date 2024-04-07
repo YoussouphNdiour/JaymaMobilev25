@@ -2,29 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>API_KEY</key>
-	<string>AIzaSyBSZIxeSErRiROSYiqEKOwAJAhPhPlZjQI</string>
-	<key>GCM_SENDER_ID</key>
-	<string>484779040551</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>sn.jayma.customer</string>
-	<key>PROJECT_ID</key>
-	<string>jayma-88682</string>
-	<key>STORAGE_BUCKET</key>
-	<string>jayma-88682.appspot.com</string>
-	<key>IS_ADS_ENABLED</key>
-	<false></false>
-	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
-	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
-	<key>IS_GCM_ENABLED</key>
-	<true></true>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:484779040551:ios:b2f4552d32114c32341302</string>
+   <key>API_KEY</key>
+   <string>AIzaSyA1DZROkrneKFmYyLtTk6u0WVEYMelcu7E</string>
+   <key>GCM_SENDER_ID</key>
+   <string>94724684220</string>
+   <key>PLIST_VERSION</key>
+   <string>1</string>
+   <key>BUNDLE_ID</key>
+   <string>com.demdik.driver</string>
+   <key>PROJECT_ID</key>
+   <string>demdik-driver</string>
+   <key>STORAGE_BUCKET</key>
+   <string>demdik-driver.appspot.com</string>
+   <key>IS_ADS_ENABLED</key>
+   <false></false>
+   <key>IS_ANALYTICS_ENABLED</key>
+   <false></false>
+   <key>IS_APPINVITE_ENABLED</key>
+   <true></true>
+   <key>IS_GCM_ENABLED</key>
+   <true></true>
+   <key>IS_SIGNIN_ENABLED</key>
+   <true></true>
+   <key>GOOGLE_APP_ID</key>
+   <string>1:94724684220:ios:d802a05c4b4831fcf453b9</string>
 </dict>
 </plist>

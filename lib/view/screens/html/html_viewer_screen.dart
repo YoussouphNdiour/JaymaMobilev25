@@ -72,13 +72,13 @@ class _HtmlViewerScreenState extends State<HtmlViewerScreen> {
                     (splashController.htmlText!.contains('<ol>') || splashController.htmlText!.contains('<ul>')) ? HtmlWidget(
                       splashController.htmlText ?? '',
                       key: Key(widget.htmlType.toString()),
-                      isSelectable: true,
+                      //isSelectable: true,
                       onTapUrl: (String url) {
                         return launchUrlString(url, mode: LaunchMode.externalApplication);
                       },
-                    ) : SelectableHtml(
+                    ) : /*SelectableHtml(
                       data: splashController.htmlText, shrinkWrap: true,
-                      onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, element) {
+                      onLinkTap: (String? url, html.CanvasRenderingContext context, Map<String, String> attributes, element) {
                         if(url!.startsWith('www.')) {
                           url = 'https://$url';
                         }
@@ -87,7 +87,14 @@ class _HtmlViewerScreenState extends State<HtmlViewerScreen> {
                         }
                         html.window.open(url, "_blank");
                       },
-                    ),
+                    )*/  HtmlWidget(
+                      splashController.htmlText ?? '',
+                      key: Key(widget.htmlType.toString()),
+                      //isSelectable: true,
+                      onTapUrl: (String url) {
+                        return launchUrlString(url, mode: LaunchMode.externalApplication);
+                      },
+                    ) ,
 
                   ]),
                 ))

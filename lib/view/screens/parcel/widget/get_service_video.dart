@@ -18,9 +18,7 @@ class _GetServiceVideoState extends State<GetServiceVideo> {
     String url = widget.videoUrl;
     _controller = YoutubePlayerController(params: const YoutubePlayerParams(
       enableCaption: false, showControls: true, showVideoAnnotations: false, showFullscreenButton: false, loop: true,
-    ))..onInit = () {
-      _controller.loadVideo(url);
-    };
+    ))..init();
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(Dimensions.radiusSmall),

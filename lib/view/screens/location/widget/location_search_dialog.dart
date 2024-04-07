@@ -30,7 +30,8 @@ class LocationSearchDialog extends StatelessWidget {
       child: Material(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusSmall)),
         child: SizedBox(width: ResponsiveHelper.isDesktop(context) ? 600 : Dimensions.webMaxWidth, child: TypeAheadField(
-          textFieldConfiguration: TextFieldConfiguration(
+          onSelected: null,
+          /*textFieldConfiguration: TextFieldConfiguration(
             controller: controller,
             textInputAction: TextInputAction.search,
             autofocus: true,
@@ -50,7 +51,7 @@ class LocationSearchDialog extends StatelessWidget {
             style: Theme.of(context).textTheme.displayMedium!.copyWith(
               color: Theme.of(context).textTheme.bodyLarge!.color, fontSize: Dimensions.fontSizeLarge,
             ),
-          ),
+          ),*/
           suggestionsCallback: (pattern) async {
             return await Get.find<LocationController>().searchLocation(context, pattern);
           },
@@ -67,7 +68,7 @@ class LocationSearchDialog extends StatelessWidget {
               ]),
             );
           },
-          onSuggestionSelected: (PredictionModel suggestion) {
+          /*onSuggestionSelected: (PredictionModel suggestion) {
             if(isRider){
               Get.find<RiderController>().setLocationFromPlace(suggestion.placeId, suggestion.description, isFrom);
             }else {
@@ -78,7 +79,7 @@ class LocationSearchDialog extends StatelessWidget {
               }
             }
             Get.back();
-          },
+          },*/
         )),
       ),
     );

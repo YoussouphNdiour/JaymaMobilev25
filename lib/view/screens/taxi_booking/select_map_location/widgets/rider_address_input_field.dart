@@ -29,27 +29,6 @@ class RiderAddressInputField extends StatelessWidget {
 
               Expanded(
                 child: TypeAheadField(
-                  textFieldConfiguration: TextFieldConfiguration(
-                    controller: isFormAddress ? riderController.formTextEditingController : riderController.toTextEditingController,
-                    textInputAction: TextInputAction.search,
-                    autofocus: false,
-                    textCapitalization: TextCapitalization.words,
-                    keyboardType: TextInputType.streetAddress,
-                    decoration: InputDecoration(
-                      hintText: 'enter_pickup'.tr,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(style: BorderStyle.none, width: 0),
-                      ),
-                      hintStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
-                        fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor,
-                      ),
-                      filled: true, fillColor: Theme.of(context).cardColor,
-                    ),
-                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                      color: Theme.of(context).textTheme.bodyLarge!.color, fontSize: Dimensions.fontSizeLarge,
-                    ),
-                  ),
                   suggestionsCallback: (pattern) async {
                     return await Get.find<LocationController>().searchLocation(context, pattern);
                   },
@@ -68,10 +47,7 @@ class RiderAddressInputField extends StatelessWidget {
                         ),
                       ]),
                     );
-                  },
-                  onSuggestionSelected: (PredictionModel suggestion) {
-                    riderController.setLocationFromPlace(suggestion.placeId, suggestion.description, isFormAddress);
-                  },
+                  }, onSelected: (PredictionModel value) {  },
                 ),
               ),
 
