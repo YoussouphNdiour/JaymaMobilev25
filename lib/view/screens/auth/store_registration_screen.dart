@@ -884,7 +884,7 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> with 
         onPressed: () {
           bool defaultDataNull = false;
           for(int index=0; index<_languageList!.length; index++) {
-            if(_languageList![index].key == 'fr') {
+            if(_languageList![index].key == 'en') {
               if (_nameController[index].text.trim().isEmpty || _addressController[index].text.trim().isEmpty) {
                 defaultDataNull = true;
               }

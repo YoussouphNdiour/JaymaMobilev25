@@ -37,14 +37,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if(GetPlatform.isWeb){
     await Firebase.initializeApp(options: const FirebaseOptions(
-        apiKey: "AIzaSyDFN-73p8zKVZbA0i5DtO215XzAb-xuGSE",
-        authDomain: "ammart-8885e.firebaseapp.com",
-        databaseURL: "https://ammart-8885e-default-rtdb.firebaseio.com",
-        projectId: "ammart-8885e",
-        storageBucket: "ammart-8885e.appspot.com",
-        messagingSenderId: "1000163153346",
-        appId: "1:1000163153346:web:4f702a4b5adbd5c906b25b",
-        measurementId: "G-L1GNL2YV61"
+        apiKey: "AIzaSyBUVYWUuubdKlqv6SdA2_hhVRzwhVaJtZk",
+        authDomain: "jayma-88682.firebaseapp.com",
+        databaseURL: "https://jayma-88682-default-rtdb.firebaseio.com",
+        projectId: "jayma-88682",
+        storageBucket: "jayma-88682.appspot.com",
+        messagingSenderId: "484779040551",
+        appId: "1:484779040551:web:fcc1614cfd2dfd52341302",
+        measurementId: "G-FNV6D046C0"
     ));
 
     MetaSEO().config();
