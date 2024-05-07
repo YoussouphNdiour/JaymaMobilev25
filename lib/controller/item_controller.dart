@@ -408,7 +408,8 @@ class ItemController extends GetxController implements GetxService {
       }else {
         if(quantityLimit != null ){
           if(_quantity! >= quantityLimit && quantityLimit != 0) {
-            showCustomSnackBar('${'maximum_quantity_limit'.tr} $quantityLimit', getXSnackBar: getxSnackBar);
+            //showCustomSnackBar('${'maximum_quantity_limit'.tr} $quantityLimit', getXSnackBar: getxSnackBar);
+            _quantity = _quantity! + 1;
           } else {
             _quantity = _quantity! + 1;
           }

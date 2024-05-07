@@ -14,6 +14,7 @@ import 'package:sixam_mart/view/base/custom_app_bar.dart';
 import 'package:sixam_mart/view/screens/checkout/widget/payment_failed_dialog.dart';
 import 'package:sixam_mart/view/screens/wallet/widget/fund_payment_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:sixam_mart/helper/route_helper.dart';
 
 class PaymentWebViewScreen extends StatefulWidget {
   final OrderModel orderModel;
@@ -86,11 +87,11 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
         body: Stack(
           children: [
             InAppWebView(
-              initialUrlRequest: URLRequest(url: Uri.parse(selectedUrl)),
+              initialUrlRequest: URLRequest(url: WebUri(selectedUrl)),
               initialUserScripts: UnmodifiableListView<UserScript>([]),
               pullToRefreshController: pullToRefreshController,
-              initialOptions: InAppWebViewGroupOptions(crossPlatform: InAppWebViewOptions(
-                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36',
+              initialOptions: InAppWebViewGroupOptions(crossPlatform: InAppWebViewOptions(useShouldOverrideUrlLoading: true,
+                userAgent: 'Mozilla/5.0 (Linux; Android 10; Pixel 3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36 CustomScheme/sameasnapp CustomScheme/wave',
               ), android: AndroidInAppWebViewOptions(useHybridComposition: true)),
               onWebViewCreated: (controller) async {
                 webViewController = controller;
@@ -105,11 +106,20 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
               shouldOverrideUrlLoading: (controller, navigationAction) async {
                 Uri uri = navigationAction.request.url!;
                 if (!["http", "https", "file", "chrome", "data", "javascript", "about"].contains(uri.scheme)) {
-                   if (await canLaunchUrl(uri)) {
+                  if (await canLaunchUrl(uri)) {
                     await launchUrl(uri, mode: LaunchMode.externalNonBrowserApplication);
-                     return NavigationActionPolicy.ALLOW;
-                   }
+                    Navigator.pushReplacementNamed(context, RouteHelper.getOrderTrackingRoute(widget.orderModel.id, widget.contactNumber));
+                     return NavigationActionPolicy.CANCEL;
+                  }
+                  
                 }
+                //  if (["orange"].contains(uri)) {
+                //      await launchUrl(uri, mode: LaunchMode.externalApplication);
+                //     Navigator.pushReplacementNamed(context, RouteHelper.getOrderTrackingRoute(widget.orderModel.id, widget.contactNumber));
+                //      return NavigationActionPolicy.CANCEL;
+                //     debugPrint('erraur');
+                //    }
+                  
                 return NavigationActionPolicy.ALLOW;
               },
               onLoadStop: (controller, url) async {
@@ -117,7 +127,11 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
                 setState(() {
                   _isLoading = false;
                 });
-                Get.find<OrderController>().paymentRedirect(url: url.toString(), canRedirect: _canRedirect, onClose: (){} , addFundUrl: widget.addFundUrl, orderID: widget.orderModel.id.toString(), contactNumber: widget.contactNumber);
+                if(["sameaosnapp"].contains(url!.scheme)){
+                  await launchUrl(url! ,mode: LaunchMode.externalNonBrowserApplication);
+                Navigator.pushReplacementNamed(context, RouteHelper.getOrderTrackingRoute(widget.orderModel.id, widget.contactNumber));
+                }
+               //Get.find<OrderController>().paymentRedirect(url: url.toString(), canRedirect: _canRedirect, onClose: (){} , addFundUrl: widget.addFundUrl, orderID: widget.orderModel.id.toString(), contactNumber: widget.contactNumber);
                 // _redirect(url.toString());
               },
               onProgressChanged: (controller, progress) {

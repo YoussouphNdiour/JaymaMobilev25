@@ -8,7 +8,7 @@ class AppConstants {
   static const double appVersion = 2.5;
 
   static const String fontFamily = 'Roboto';
-  static const bool payInWevView = false;
+  static const bool payInWevView = true;
   static const int balanceInputLen = 10;
   static const String webHostedUrl = 'https://jaymagadegui.shop';
 

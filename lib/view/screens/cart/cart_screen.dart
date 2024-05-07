@@ -524,7 +524,7 @@ class CheckoutButton extends StatelessWidget {
                   } /*else if(Get.find<AuthController>().isGuestLoggedIn() && !Get.find<SplashController>().configModel!.guestCheckoutStatus!) {
                     showCustomSnackBar('currently_your_zone_have_no_permission_to_place_any_order'.tr);
                   }*/ else {
-                    if(Get.find<SplashController>().module == null || Get.find<CartController>().notAvailableIndex == -1) {
+                    if(Get.find<SplashController>().module == null) {
                       int i = 0;
                       for(i = 0; i < Get.find<SplashController>().moduleList!.length; i++){
                         if(cartController.cartList[0].item!.moduleId == Get.find<SplashController>().moduleList![i].id){
